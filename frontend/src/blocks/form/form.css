@@ -1,0 +1,11 @@
+.form {
+  max-width: 358px;
+  width: 100%;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-self: center;
+  background: #000000;
+  overflow: visible;
+}

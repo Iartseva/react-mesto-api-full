@@ -1,0 +1,19 @@
+.form__input-error {
+  max-width: 358px;
+  width: 100%;
+  min-height: 33px;
+  margin: 0 auto;
+  padding-top: 3px;
+  box-sizing: border-box;
+  
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: white;
+
+  visibility: hidden;
+  
+  
+}
