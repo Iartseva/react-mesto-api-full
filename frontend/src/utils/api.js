@@ -87,7 +87,8 @@ deleteCard(cardId) {
 const api = new Api({
   url: 'https://api.lastproject.students.nomoredomains.club',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization' : `Bearer ${localStorage.getItem('jwt')}`
   }
 });
 
