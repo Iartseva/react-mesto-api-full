@@ -85,9 +85,8 @@ deleteCard(cardId) {
 }
 
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-50',
+  url: 'https://api.lastproject.students.nomoredomains.club',
   headers: {
-    authorization: '9e47b405-e444-44ef-ada3-6d426edd111e',
     'Content-Type': 'application/json'
   }
 });
