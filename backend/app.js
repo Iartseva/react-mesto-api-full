@@ -2,8 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
+// const cors = require('cors');
 const { errors } = require('celebrate');
 const setErrors = require('./middlewares/setErrors');
 const router = require('./routes/allRoutes');
@@ -12,7 +11,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-const options = {
+/* const options = {
   origin: [
     'http://localhost:3000',
     'http://lastproject.students.nomoredomains.club',
@@ -25,10 +24,10 @@ const options = {
   optionsSuccessStatus: 204,
 };
 
-app.use('*', cors(options));
+app.use('*', cors(options)); */
 
 app.use(express.json());
-app.use(cookieParser());
+
 app.use(helmet());
 
 app.use(requestLogger); // до всех роутов
