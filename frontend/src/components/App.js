@@ -56,9 +56,9 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  useEffect(() => {
+ /*  useEffect(() => {
     checkToken();
-  }, []);
+  }, []); */
 
   //регистрация
   function handleRegister(password, email) {
@@ -76,13 +76,10 @@ function App() {
   function handleLogin(password, email) {
     login(password, email)
       .then((data) => {
-        if (data.token) {
-          localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
           setUserMail(email);
           history.push("/");
-        }
-      })
+        })
       .catch(() => {
         setIsInfoToolPopupOpen("error");
         history.push("/sign-in");
@@ -90,7 +87,7 @@ function App() {
   }
 
   //проверка токена
-  function checkToken() {
+ /*  function checkToken() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       getMail(jwt)
@@ -104,12 +101,12 @@ function App() {
           history.push("/sign-in");
         });
     }
-  }
+  } */
 
   //выход
   function logout() {
     setIsLoggedIn(false);
-    localStorage.removeItem("jwt");
+  /*   localStorage.removeItem("jwt"); */
   }
 
   function handleEditProfileClick() {

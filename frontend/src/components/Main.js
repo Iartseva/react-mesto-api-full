@@ -38,6 +38,8 @@ function Main(props) {
           <Card
             key={card._id}
             card={card}
+            name={card.name}
+            link={card.link}
             onCardClick={props.onCardClick}
             onCardLike={props.onCardLike}
             onCardDelete={props.onCardDelete}
