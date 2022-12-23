@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const setErrors = require('./middlewares/setErrors');
 const router = require('./routes/allRoutes');
@@ -20,14 +21,12 @@ const options = {
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 200,
 };
 
 app.use('*', cors(options));
 
 app.use(express.json());
-
+app.use(cookieParser());
 app.use(helmet());
 
 app.use(requestLogger); // до всех роутов
