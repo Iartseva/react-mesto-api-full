@@ -8,7 +8,7 @@ const { resStatusCreate } = require('../utils/constants');
 
 module.exports.getAllCards = (req, res, next) => {
   Card.find({}).populate(['likes', 'owner'])
-    .then((cards) => res.send({ cards }))
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 

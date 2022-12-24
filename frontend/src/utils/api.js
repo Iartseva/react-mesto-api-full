@@ -15,6 +15,7 @@ _checkResponse(res) {
 // загрузка данных о пользователе
 getUserInfo() {
   return fetch(`${this._url}/users/me`, {
+    credentials: "include",
     headers: this._headers
   })
   .then(this._checkResponse)
@@ -23,6 +24,7 @@ getUserInfo() {
 //загрузка первоначальных карточек
 getInitialCard() {
   return fetch(`${this._url}/cards`, {
+    credentials: "include",
     headers: this._headers
   })
   .then(this._checkResponse)
@@ -33,6 +35,7 @@ editProfile(data) {
   return fetch(`${this._url}/users/me`, {
     method: 'PATCH',
     headers: this._headers,
+    credentials: "include",
     body: JSON.stringify({
       name: data.name,
       about: data.about
@@ -45,6 +48,7 @@ editProfile(data) {
 changeAvatar(data) {
   return fetch(`${this._url}/users/me/avatar`, {
     method: 'PATCH',
+    credentials: "include",
     body: JSON.stringify({
       avatar: data.avatar
     }),
@@ -57,6 +61,7 @@ changeAvatar(data) {
 addNewCard(data) {
   return fetch(`${this._url}/cards`, {
     method: 'POST',
+    credentials: "include",
     headers: this._headers,
     body: JSON.stringify({
       name: data.name,
@@ -70,6 +75,7 @@ addNewCard(data) {
 changeLikeCardStatus(cardId, isLiked) {
   return fetch(`${this._url}/cards/${cardId}/likes`, {
     method: isLiked ? "PUT" : "DELETE",
+    credentials: "include",
     headers: this._headers,
   }).then(this._checkResponse);
 }
@@ -78,6 +84,7 @@ changeLikeCardStatus(cardId, isLiked) {
 deleteCard(cardId) {
   return fetch(`${this._url}/cards/${cardId}`, {
     method: 'DELETE',
+    credentials: "include",
     headers: this._headers
   })
   .then(this._checkResponse)
