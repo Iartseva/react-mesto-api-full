@@ -17,7 +17,7 @@ module.exports.createCard = (req, res, next) => {
   const owner = req.user._id;
   Card.create({ name, link, owner })
     .then((card) => {
-      res.status(resStatusCreate).send({ card });
+      res.status(resStatusCreate).send(card);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -38,7 +38,7 @@ module.exports.deleteCard = (req, res, next) => {
         throw new ForbiddenError('Нельзя удалять карту другого пользователя');
       }
       card.remove()
-        .then(() => res.send({ card }))
+        .then(() => res.send(card))
         .catch(next);
     })
     .catch((err) => {
@@ -60,7 +60,7 @@ module.exports.likeCard = (req, res, next) => {
       throw new NotFound('Карточка с указанным id не найдена');
     })
     .then((card) => {
-      res.send({ card });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -81,7 +81,7 @@ module.exports.dislikeCard = (req, res, next) => {
       throw new NotFound('Карточка с указанным id не найдена');
     })
     .then((card) => {
-      res.send({ card });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
