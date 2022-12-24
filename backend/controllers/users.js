@@ -12,7 +12,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 function findUser(res, next, userId) {
   User.findById(userId)
     .orFail(new NotFound('Пользователь не найден'))
-    .then((user) => res.send({ user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new ValidationError('Передан невалидный ID'));
