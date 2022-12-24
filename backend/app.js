@@ -30,11 +30,6 @@ app.use(cookieParser());
 app.use(helmet());
 
 app.use(requestLogger); // до всех роутов
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
 app.use(router);
 app.use(errorLogger); // после роутов, но до ошибок
 app.use(errors());
