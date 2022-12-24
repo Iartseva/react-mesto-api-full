@@ -219,38 +219,7 @@ function App() {
             onCardDelete={handleDeleteButtonClick}
             cards={cards}
           />
-          <Route exact path="/">
-            <EditProfilePopup
-              isOpened={isEditPopupOpened}
-              onClose={closeAllPopups}
-              onUpdateUser={handleUpdateUser}
-              isLoading={isLoading}
-            />
-            <EditAvatarPopup
-              isOpened={isEditAvatarPopupOpened}
-              onClose={closeAllPopups}
-              onUpdateAvatar={handleUpdateAvatar}
-              isLoading={isLoading}
-            />
-            <AddPlacePopup
-              isOpened={isAddPopupOpened}
-              onClose={closeAllPopups}
-              onAddPlace={handleAddPlaceSubmit}
-              isLoading={isLoading}
-            />
-            <ImagePopup
-              isOpened={isImagePopupOpened}
-              card={selectedCard}
-              onClose={closeAllPopups}
-            />
-            <DeletePopup
-              isOpened={isCardDeletePopupOpened}
-              onClose={closeAllPopups}
-              card={selectedCard}
-              onDeleteCard={handleCardDelete}
-              isLoading={isLoading}
-            />
-          </Route>
+        
           <Route path="/sign-up">
             <Register isLoggedIn={isLoggedIn} handleRegister={handleRegister} />
           </Route>
@@ -263,6 +232,37 @@ function App() {
         </Switch>
 
         <Footer />
+
+        <EditProfilePopup
+          isOpened={isEditPopupOpened}
+          onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
+          isLoading={isLoading}
+        />
+        <EditAvatarPopup
+          isOpened={isEditAvatarPopupOpened}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
+          isLoading={isLoading}
+        />
+        <AddPlacePopup
+          isOpened={isAddPopupOpened}
+          onClose={closeAllPopups}
+          onAddPlace={handleAddPlaceSubmit}
+          isLoading={isLoading}
+        />
+        <ImagePopup
+          isOpened={isImagePopupOpened}
+          card={selectedCard}
+          onClose={closeAllPopups}
+        />
+        <DeletePopup
+          isOpened={isCardDeletePopupOpened}
+          onClose={closeAllPopups}
+          card={selectedCard}
+          onDeleteCard={handleCardDelete}
+          isLoading={isLoading}
+        />
 
         <InfoTooltip
           isOpened={isInfoToolPopupOpen}
