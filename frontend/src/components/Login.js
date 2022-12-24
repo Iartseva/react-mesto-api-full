@@ -24,6 +24,7 @@ function Login(props) {
         id="email"
         name="email"
         placeholder="Email"
+        autoComplete="username"
         onChange={handleChange}
         required
         value={values.email || ""}
@@ -42,8 +43,7 @@ function Login(props) {
         type="password"
         name="password"
         placeholder="Пароль"
-        minLength={6}
-        maxLength={10}
+        autoComplete="current-password"
         onChange={handleChange}
         required
         value={values.password || ""}

@@ -26,6 +26,7 @@ function Register(props) {
         name="email"
         type="email"
         placeholder="Email"
+        autoComplete="username"
         minLength={4}
         required
         onChange={handleChange}
@@ -43,9 +44,8 @@ function Register(props) {
         id="password"
         name="password"
         type="password"
-        minLength={6}
-        maxLength={10}
         placeholder="Пароль"
+        autoComplete="current-password"
         required
         onChange={handleChange}
         value={values.password || ""}

@@ -9,29 +9,29 @@ function checkResponse(res) {
   });
 }
 
-function register(password, email) {
+function register(email, password) {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ password, email }),
+    body: JSON.stringify({ email, password }),
   }).then(checkResponse);
 }
 
-function login(password, email) {
+function login(email, password) {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ password, email }),
+    body: JSON.stringify({ email, password }),
   }).then(checkResponse);
 }
 
-function getMail(jwt) {
+/* function getMail(jwt) {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     credentials: "include",
@@ -41,5 +41,5 @@ function getMail(jwt) {
     }
 }).then(checkResponse);
 }
-
-export { register, login, getMail };
+ */
+export { register, login/* , getMail */ };
