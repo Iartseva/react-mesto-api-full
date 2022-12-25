@@ -71,15 +71,6 @@ addNewCard(data) {
   .then(this._checkResponse)
 }
 
-//проверка лайка
-/* changeLikeCardStatus(cardId, isLiked) {
-  return fetch(`${this._url}/cards/${cardId}/likes`, {
-    method: isLiked ? "PUT" : "DELETE",
-    credentials: "include",
-    headers: this._headers,
-  }).then(this._checkResponse);
-} */
-
 addLike(cardId) {
   return fetch(`${this._url}/cards/${cardId}/likes`, {
     method: "PUT",
