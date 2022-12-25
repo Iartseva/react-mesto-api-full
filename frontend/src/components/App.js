@@ -15,7 +15,7 @@ import Register from "./Register";
 import Login from "./Login";
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
-import { register, login, getMail } from "../utils/auth";
+import { register, login } from "../utils/auth";
 
 function App() {
   const [isEditPopupOpened, setIsEditPopupOpened] = useState(false);
@@ -34,31 +34,33 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      history.push("/");
       api
         .getUserInfo()
         .then((data) => {
+          setIsLoggedIn(true);
           setCurrentUser(data);
+          setUserMail(data.email);
+          history.push("/");         
         })
         .catch((err) => console.log(`Ошибка: ${err}`));
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, history]);
 
   useEffect(() => {
     if (isLoggedIn) {
-      history.push("/");
       api
         .getInitialCard()
         .then((data) => {
           setCards(data);
+          history.push("/");
         })
         .catch((err) => console.log(`Ошибка: ${err}`));
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, history]);
 
- /*  useEffect(() => {
+/*  useEffect(() => {
     checkToken();
-  }, []); */
+  }, []);  */
 
   //регистрация
   function handleRegister(password, email) {
@@ -87,7 +89,7 @@ function App() {
   }
 
   //проверка токена
- /*  function checkToken() {
+  /* function checkToken() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       getMail(jwt)
@@ -102,7 +104,6 @@ function App() {
         });
     }
   } */
-
   //выход
   function logout() {
     setIsLoggedIn(false);

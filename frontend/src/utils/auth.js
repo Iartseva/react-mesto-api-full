@@ -40,6 +40,6 @@ function login(password, email) {
       "Authorization" : `Bearer ${jwt}`
     }
 }).then(checkResponse);
-}
- */
+} */
+
 export { register, login/* , getMail */ };

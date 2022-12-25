@@ -5,7 +5,7 @@ function Card(props) {
   const user = React.useContext(CurrentUserContext);
 
   // Проверка владельца карты
-  const isOwn = props.card.owner._id === user._id;
+  const isOwn = props.card.owner === user._id;
   // Создаём переменную, которую после зададим в `className` для кнопки удаления
   const cardDeleteButtonClassName = `element__delete ${
     isOwn ? "element__delete_visible" : ""

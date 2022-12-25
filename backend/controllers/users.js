@@ -50,6 +50,7 @@ module.exports.createUser = (req, res, next) => {
       name: user.name,
       about: user.about,
       avatar: user.avatar,
+      _id: user._id,
     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -77,6 +78,7 @@ module.exports.updateUserInfo = (req, res, next) => {
       name: user.name,
       about: user.about,
       avatar: user.avatar,
+      _id: user._id,
     }))
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
@@ -101,6 +103,7 @@ module.exports.updateAvatar = (req, res, next) => {
       name: user.name,
       about: user.about,
       avatar: user.avatar,
+      _id: user._id,
     }))
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
