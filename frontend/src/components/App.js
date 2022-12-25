@@ -15,7 +15,7 @@ import Register from "./Register";
 import Login from "./Login";
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
-import { register, login } from "../utils/auth";
+import { register, login, logout } from "../utils/auth";
 
 function App() {
   const [isEditPopupOpened, setIsEditPopupOpened] = useState(false);
@@ -32,30 +32,37 @@ function App() {
   const [userMail, setUserMail] = useState("");
   const history = useHistory();
 
-  useEffect(() => {
-    if (isLoggedIn) {
+  /* useEffect(() => {
       api
         .getUserInfo()
         .then((data) => {
-          setIsLoggedIn(true);
           setCurrentUser(data);
           setUserMail(data.email);
           history.push("/");         
         })
         .catch((err) => console.log(`Ошибка: ${err}`));
-    }
-  }, [isLoggedIn, history]);
+  }, [isLoggedIn, history]); */
 
   useEffect(() => {
-    if (isLoggedIn) {
-      api
-        .getInitialCard()
-        .then((data) => {
-          setCards(data);
-          history.push("/");
-        })
-        .catch((err) => console.log(`Ошибка: ${err}`));
-    }
+    api
+      .getUserInfo()
+      .then((data) => {
+        setIsLoggedIn(true);
+        setCurrentUser(data);
+        setUserMail(data.email);
+        history.push("/");
+      })
+      .catch((err) => console.log(`Ошибка: ${err}`));
+}, [isLoggedIn, history]);
+
+  useEffect(() => {
+    api
+      .getInitialCard()
+      .then((data) => {
+      setCards(data);
+      history.push("/");
+      })
+      .catch((err) => console.log(`Ошибка: ${err}`));
   }, [isLoggedIn, history]);
 
 /*  useEffect(() => {
@@ -78,8 +85,8 @@ function App() {
   function handleLogin(password, email) {
     login(password, email)
       .then((data) => {
+          setUserMail(data.email);
           setIsLoggedIn(true);
-          setUserMail(email);
           history.push("/");
         })
       .catch(() => {
@@ -88,6 +95,14 @@ function App() {
       });
   }
 
+  function handleLogout() {
+    logout()
+    .then((res) => {
+      setIsLoggedIn(false);
+      history.push("/sign-in");
+
+    });
+  }
   //проверка токена
   /* function checkToken() {
     const jwt = localStorage.getItem("jwt");
@@ -105,10 +120,10 @@ function App() {
     }
   } */
   //выход
-  function logout() {
+/*   function logout() {
     setIsLoggedIn(false);
-  /*   localStorage.removeItem("jwt"); */
-  }
+  /*   localStorage.removeItem("jwt"); 
+  }*/
 
   function handleEditProfileClick() {
     setIsEditPopupOpened(true);
@@ -152,7 +167,7 @@ function App() {
         );
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
-  }
+    }
 
   function handleCardDelete(card) {
     setIsLoading(true);
@@ -205,7 +220,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header userMail={userMail} logout={logout} />
+        <Header userMail={userMail} logout={handleLogout} />
         <Switch>
           <ProtectedRoute
             exact
@@ -220,7 +235,6 @@ function App() {
             onCardDelete={handleDeleteButtonClick}
             cards={cards}
           />
-        
           <Route path="/sign-up">
             <Register isLoggedIn={isLoggedIn} handleRegister={handleRegister} />
           </Route>
@@ -275,5 +289,6 @@ function App() {
     </CurrentUserContext.Provider>
   );
 }
+
 
 export default App;

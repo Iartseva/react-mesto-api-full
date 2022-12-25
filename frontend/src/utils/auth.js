@@ -42,4 +42,14 @@ function login(password, email) {
 }).then(checkResponse);
 } */
 
-export { register, login/* , getMail */ };
+function logout() {
+  return fetch(`${BASE_URL}/signout`, {
+    method: "POST",
+    credentials: 'include',
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(checkResponse);
+};
+
+export { register, login, logout/* , getMail */ };

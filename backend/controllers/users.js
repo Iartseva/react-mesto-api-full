@@ -129,3 +129,11 @@ module.exports.login = (req, res, next) => {
     })
     .catch(next);
 };
+
+module.exports.logout = async (req, res, next) => {
+  try {
+    await res.clearCookie('jwt').send({ message: 'Вы вышли!' });
+  } catch (err) {
+    next(err);
+  }
+};
