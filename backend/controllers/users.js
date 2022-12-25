@@ -50,11 +50,10 @@ module.exports.createUser = (req, res, next) => {
       name: user.name,
       about: user.about,
       avatar: user.avatar,
-      _id: user._id,
     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new ValidationError('Указаны некорректные данные'));
+        next(new ValidationError('Указаны некорректные данные!'));
       } else if (err.code === 11000) {
         res.status(resStatusConflict).send({ message: `${err.message}` });
       } else {
@@ -78,11 +77,10 @@ module.exports.updateUserInfo = (req, res, next) => {
       name: user.name,
       about: user.about,
       avatar: user.avatar,
-      _id: user._id,
     }))
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
-        next(new ValidationError('Указаны некорректные данные'));
+        next(new ValidationError('Указаны некорректные данные!'));
       } else {
         next(err);
       }
@@ -103,11 +101,10 @@ module.exports.updateAvatar = (req, res, next) => {
       name: user.name,
       about: user.about,
       avatar: user.avatar,
-      _id: user._id,
     }))
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
-        next(new ValidationError('Указаны некорректные данные'));
+        next(new ValidationError('Указаны некорректные данные!'));
       } else {
         next(err);
       }
@@ -125,7 +122,7 @@ module.exports.login = (req, res, next) => {
         httpOnly: true,
         sameSite: 'none',
         secure: true,
-      }).send({ message: 'Вы авторизованы' });
+      }).send({ message: 'Вы авторизованы!' });
     })
     .catch(next);
 };

@@ -9,25 +9,25 @@ function checkResponse(res) {
   });
 }
 
-function register(email, password) {
+function register(password, email) {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({password, email} ),
   }).then(checkResponse);
 }
 
-function login(email, password) {
+function login(password, email) {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({password, email} ),
   }).then(checkResponse);
 }
 

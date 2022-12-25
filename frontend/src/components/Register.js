@@ -60,7 +60,7 @@ function Register(props) {
       <button
         className="form__button-submit"
         type="submit"
-        onClick={props.handleRegister}
+        //onClick={props.handleRegister}
       >
         Зарегистрироваться
       </button>

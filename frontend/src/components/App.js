@@ -63,7 +63,7 @@ function App() {
   //регистрация
   function handleRegister(password, email) {
     register(password, email)
-      .then((res) => {
+      .then(() => {
         setIsInfoToolPopupOpen("success");
         history.push("/sign-in");
       })
