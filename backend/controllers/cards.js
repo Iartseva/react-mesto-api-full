@@ -7,7 +7,7 @@ const {
 const { resStatusCreate } = require('../utils/constants');
 
 module.exports.getAllCards = (req, res, next) => {
-  Card.find({}).populate(['likes', 'owner'])
+  Card.find({})
     .then((cards) => res.send(cards))
     .catch(next);
 };
@@ -60,13 +60,7 @@ module.exports.likeCard = (req, res, next) => {
       throw new NotFound('Карточка с указанным id не найдена');
     })
     .then((card) => {
-      res.send({
-        likes: card.likes,
-        _id: card._id,
-        name: card.name,
-        link: card.link,
-        owner: card.owner,
-      });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -87,13 +81,7 @@ module.exports.dislikeCard = (req, res, next) => {
       throw new NotFound('Карточка с указанным id не найдена');
     })
     .then((card) => {
-      res.send({
-        likes: card.likes,
-        _id: card._id,
-        name: card.name,
-        link: card.link,
-        owner: card.owner,
-      });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
