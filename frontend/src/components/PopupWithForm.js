@@ -8,7 +8,7 @@ function PopupWithForm(props) {
     >
       <div className="popup__container">
         <form
-          className="popup__form popup__form_type_edit-profile"
+          className={`popup__form popup__form_${props.name}`}
           onSubmit={props.onSubmit}
           name={`popup__form-${props.name}`}
           noValidate

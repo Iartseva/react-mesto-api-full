@@ -26,7 +26,7 @@ function AddPlacePopup(props) {
     if (!props.isOpened) {
       resetForm();
     }
-  }, [props.isOpened]);
+  }, [props.isOpened, resetForm]);
 
   return (
     <PopupWithForm 
@@ -36,7 +36,8 @@ function AddPlacePopup(props) {
     onClose={props.onClose} 
     onSubmit={handleSubmit}
     isValid={isValid}
-    textButton={props.isLoading ? "Создание..." : "Создать"}>
+    textButton={props.isLoading ? "Создание..." : "Создать"}
+    >
       <label className="popup__label">
         <input 
         className="popup__input popup__input_type_place" 

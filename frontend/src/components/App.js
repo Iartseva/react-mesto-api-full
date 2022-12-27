@@ -251,50 +251,50 @@ function App() {
           <Route path="/sign-in">
             <Login isLoggedIn={isLoggedIn} handleLogin={handleLogin} />
           </Route>
+          
           <Route path="*">
             {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
           </Route>
+
         </Switch>
 
         <Footer />
-
+          
         <EditProfilePopup
-          isOpened={isEditPopupOpened}
-          onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
-          isLoading={isLoading}
-        />
-        <EditAvatarPopup
-          isOpened={isEditAvatarPopupOpened}
-          onClose={closeAllPopups}
-          onUpdateAvatar={handleUpdateAvatar}
-          isLoading={isLoading}
-        />
-        <AddPlacePopup
-          isOpened={isAddPopupOpened}
-          onClose={closeAllPopups}
-          onAddPlace={handleAddPlaceSubmit}
-          isLoading={isLoading}
-        />
-        <ImagePopup
-          isOpened={isImagePopupOpened}
-          card={selectedCard}
-          onClose={closeAllPopups}
-        />
-        <DeletePopup
-          isOpened={isCardDeletePopupOpened}
-          onClose={closeAllPopups}
-          card={selectedCard}
-          onDeleteCard={handleCardDelete}
-          isLoading={isLoading}
-        />
+            isOpened={isEditPopupOpened}
+            onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
+            isLoading={isLoading}
+          />
+            
+          <AddPlacePopup
+            isOpened={isAddPopupOpened}
+            onClose={closeAllPopups}
+            onAddPlace={handleAddPlaceSubmit}
+            isLoading={isLoading}
+          />
+            
+          <ImagePopup
+            isOpened={isImagePopupOpened}
+            card={selectedCard}
+            onClose={closeAllPopups}
+          />
+          
+          <DeletePopup
+            isOpened={isCardDeletePopupOpened}
+            onClose={closeAllPopups}
+            card={selectedCard}
+            onDeleteCard={handleCardDelete}
+            isLoading={isLoading}
+          />
 
-        <InfoTooltip
-          isOpened={isInfoToolPopupOpen}
-          onClose={closeAllPopups}
-          textOk="Вы успешно зарегистрировались!"
-          textTrouble="Что-то пошло не так! Попробуйте ещё раз."
-        />
+          <EditAvatarPopup
+            isOpened={isEditAvatarPopupOpened}
+            onClose={closeAllPopups}
+            onUpdateAvatar={handleUpdateAvatar}
+            isLoading={isLoading}
+          />
+        
       </div>
     </CurrentUserContext.Provider>
   );

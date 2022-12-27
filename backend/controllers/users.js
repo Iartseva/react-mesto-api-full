@@ -4,8 +4,9 @@ const User = require('../models/user');
 const {
   NotFound,
   ValidationError,
+  ConflictError,
 } = require('../errors/allErrors');
-const { resStatusConflict, resStatusCreate } = require('../utils/constants');
+const { resStatusCreate } = require('../utils/constants');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -56,7 +57,8 @@ module.exports.createUser = (req, res, next) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError('Указаны некорректные данные!'));
       } else if (err.code === 11000) {
-        res.status(resStatusConflict).send({ message: `${err.message}` });
+        next(new ConflictError('Указанный e-mail уже существует в базе'));
+        /* res.status(resStatusConflict).send({ message: `${err.message}` }); */
       } else {
         next(err);
       }
@@ -119,7 +121,7 @@ module.exports.login = (req, res, next) => {
 
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret', { expiresIn: '7d' });
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
