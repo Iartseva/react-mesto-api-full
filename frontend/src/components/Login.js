@@ -1,8 +1,10 @@
 import React from "react";
 import useValidation from "../hooks/useValidation";
 
+// не могу повторить неработоспособность кнопок "Зарегистрироваться" и "Войти"
+
 function Login(props) {
-  const { values, handleChange, errors, isValid, setValues, resetForm } =
+  const { values, handleChange, errors, isValid, resetForm } =
     useValidation({
       email: "",
       password: "",
@@ -17,7 +19,7 @@ function Login(props) {
   }
 
   return (
-    <form className="form form__login" noValidate onSubmit={handleSubmit}>
+    <form className="form form__login" noValidate onSubmit={handleSubmit}> 
       <h2 className="form__title">Вход</h2>
       <input
         className="form__input form__input_type_email"
