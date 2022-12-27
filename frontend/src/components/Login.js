@@ -4,7 +4,7 @@ import useValidation from "../hooks/useValidation";
 // не могу повторить неработоспособность кнопок "Зарегистрироваться" и "Войти"
 
 function Login(props) {
-  const { values, handleChange, errors, isValid, resetForm } =
+  const { values, handleChange, errors, isValid, setValues, resetForm } =
     useValidation({
       email: "",
       password: "",
