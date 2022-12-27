@@ -6,4 +6,4 @@
 
 • Backend https://api.lastproject.students.nomoredomains.club
 
-• Репозиторий GitHub https://github.com/Iartseva/react-mesto-api-full
+• GitHub репозиторий https://github.com/Iartseva/react-mesto-api-full
