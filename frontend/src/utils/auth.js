@@ -31,17 +31,6 @@ function login(password, email) {
   }).then(checkResponse);
 }
 
-/* function getMail(jwt) {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization" : `Bearer ${jwt}`
-    }
-}).then(checkResponse);
-} */
-
 function logout() {
   return fetch(`${BASE_URL}/signout`, {
     method: "POST",
@@ -52,4 +41,4 @@ function logout() {
   }).then(checkResponse);
 };
 
-export { register, login, logout/* , getMail */ };
+export { register, login, logout };

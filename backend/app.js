@@ -7,7 +7,8 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const setErrors = require('./middlewares/setErrors');
 const router = require('./routes/allRoutes');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
+// отключение логера для экономии памяти сервера
+// const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -29,9 +30,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(helmet());
 
-app.use(requestLogger); // до всех роутов
+// app.use(requestLogger); // до всех роутов
 app.use(router);
-app.use(errorLogger); // после роутов, но до ошибок
+// app.use(errorLogger); // после роутов, но до ошибок
 app.use(errors());
 app.use(setErrors);
 
